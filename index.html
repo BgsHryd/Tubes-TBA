@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport", content="width=device-width, initial-scale=1.0">
+        <title> Parser Website </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css"/>
+        <link rel="stylesheet" href="html-style.css">
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>
+                BAHASA BALI
+                <h2>
+                    LEXICAL ANALYZER AND PARSER
+                </h2>
+            </h1>
+        </div>
+        <div class="flex-container">
+            <div class="box">
+                <h3>SUBJEK</h3>
+            </div>
+            <div class="box">
+                <h3>VERBA</h3>
+            </div>
+            <div class="box">
+                <h3>OBJEK</h3>
+                <div class="little">
+
+                </div>
+            </div>
+        </div>
+        <div class="flex-container-small">
+            <div class="box_word">
+                <li>cang</li>
+                <li>cai</li>
+                <li>ia</li>
+            </div>
+            <div class="box_word">
+                <li>nginem</li>
+                <li>ngutgut</li>
+                <li>ningeh</li>
+            </div>
+            <div class="box_word">
+                <li>lipi</li>
+                <li>woh</li>
+                <li>wit</li>
+                <li>be</li>
+            </div>
+        </div>
+        <main>
+            <input type="text" id="test-input", placeholder="input disini">
+            <button id="check" class="check-button"
+            pys-onClick="lexical_analyzer", type="submit">check</button>
+            <div id="output"></div>
+        </main>
+        <!-- <py-script src="./Tubes_TBA.py"></py-script> -->
+        <py-script src="./lexical_analyzer.py"></py-script>
+    </body>
+</html>
