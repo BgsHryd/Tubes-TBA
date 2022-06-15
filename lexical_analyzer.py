@@ -62,7 +62,7 @@ trans_tab[("r9", "t")] = "q5"
 #ningeh
 trans_tab[("start", "n")] = "r1"
 trans_tab[("r0", "n")] = "r1"
-trans_tab[("r11", "i")] = "r10"
+trans_tab[("r1", "i")] = "r10"
 trans_tab[("r10", "n")] = "r11"
 trans_tab[("r11", "g")] = "r12"
 trans_tab[("r12", "e")] = "r13"
@@ -99,34 +99,36 @@ trans_tab["r0", " "] = "r0"
 trans_tab["r0", "#"] = "accept"
 
 def lexical_analyzer(*args):
-  global trans_tab
-  global sentence
-  get_sentence()
-  input_sentence = sentence + "#"
-  index_ch = 0
-  state = 'start'
-  current_token = ''
-  hasil = ""
-  verbose = True
+    global trans_tab
+    global sentence
+    get_sentence()
+    input_sentence = sentence + "#"
+    index_ch = 0
+    state = 'start'
+    current_token = ''
+    hasil = ""
 
-  while state != 'accept':
-    current_char = input_sentence[index_ch]
-    current_token += current_char
-    
-    state = trans_tab[(state, current_char)]
-    if state == 'q5' or state == 'r0' and current_char != ' ':
-        hasil+=f'token: {current_token} valid\n'
-        current_token = ''
-    elif state == 'error':
-        hasil+=f'token: {current_token} tidak valid\n'
-        break
-    index_ch += 1
+    while state != 'accept':
+      current_char = input_sentence[index_ch]
+      current_token += current_char
+      
+      state = trans_tab[(state, current_char)]
+      if state == 'q5' or state == 'r0' and current_char != ' ':
+          hasil+=f'token: {current_token} valid\n'
+          current_token = ''
+      elif state == 'error':
+          hasil+=f'token: {current_token} tidak valid\n'
+          break
+      index_ch += 1
 
-  if state == 'accept':
-    hasil+=f'semua token di kalimat: "{sentence}" valid\n'
-  else:
-    hasil+=f'input kalimat: "{sentence}" tidak valid\n'
-  Element('output').element.innerText = hasil
+    if state == 'accept':
+      verdict =f'semua token di kalimat: "{sentence}" valid\n'
+      valid = True
+    else:
+      verdict =f'input kalimat: "{sentence}" tidak valid\n'
+      valid = False
+    # Element('output').element.innerText = hasil + verdict
+    return hasil, verdict, valid
 
 def get_sentence(*args, **kwargs):
     global sentence

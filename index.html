@@ -53,10 +53,19 @@
         <main>
             <input type="text" id="test-input", placeholder="input disini">
             <button id="check" class="check-button"
-            pys-onClick="lexical_analyzer", type="submit">check</button>
+            pys-onClick="lexical_analyzer_parser", type="submit">check</button>
             <div id="output"></div>
         </main>
-        <!-- <py-script src="./Tubes_TBA.py"></py-script> -->
         <py-script src="./lexical_analyzer.py"></py-script>
+        <py-script src="./LL_Parser.py"></py-script>
+        <py-script>
+            def lexical_analyzer_parser(*args, **kwargs):
+                verbose_lexi, verdict_lexi, valid_lexi = lexical_analyzer()
+                if valid_lexi:
+                    verbose_parser, verdict_parser, valid_parser = parser()
+                    Element('output').element.innerText = verdict_lexi +verdict_parser
+                else:
+                    Element('output').element.innerText = verbose_lexi + verdict_lexi + "\nTidak melakukan parser\n"
+        </py-script>
     </body>
 </html>
